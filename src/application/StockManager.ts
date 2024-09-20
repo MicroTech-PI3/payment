@@ -12,13 +12,13 @@ export default class StockManager implements IStockManager {
   async updateStock(soldCartId: number): Promise<boolean> {
     try {
       const soldCart = await this.retrieveSoldCart.getSoldCart(soldCartId);
-      let sqlQuery = "UPDATE PRODUCTS SET QUANTITY = CASE QUANTITY ";
+      let sqlQuery = "UPDATE PRODUCT SET QUANTITY = CASE ";
 
       const purchasedItems = soldCart.getProducts();
       for (const product of purchasedItems) {
-        sqlQuery += `WHEN ID = ${product.getProduct().getId()} THEN STOCK - ${product.getQuantity()} `;
+        sqlQuery += `WHEN ID = ${product.getProduct().getId()} THEN QUANTITY - ${product.getQuantity()} `;
       }
-      sqlQuery += "ELSE NULL END";
+      sqlQuery += "ELSE QUANTITY END";
 
       const [rows] = await this.mysqlDBC.query<ResultSetHeader>(sqlQuery);
 
