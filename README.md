@@ -1,2 +1,2 @@
-# bill_sender
-The repository for managing the sending system for electronic billing.
+# Payment
+The repository for managing payment features like the stock update.
