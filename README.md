@@ -1,2 +1,2 @@
-# stock_update
-The repository for managing the Stock Update functionalities.
+# bill_sender
+The repository for managing the sending system for electronic billing.
