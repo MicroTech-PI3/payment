@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --env-file=env/.development.env src/payment-app.ts",
     "build": "rm -rf ./build && tsc",
-    "start": "pm2 start ecosystem.config.js --env production",
+    "start": "node ./build/src/payment-app.js",
     "test": "jest --verbose"
   },
   "keywords": [
