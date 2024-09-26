@@ -7,6 +7,10 @@ export default class PaymentController {
   public async updateStock(req: Request, res: Response): Promise<void> {
     try {
       const { soldCartId } = req.body;
+      if (!soldCartId) {
+        res.status(400).json({ error: "soldCartId is required" });
+        return;
+      }
       const bill = await this.stockManager.updateStock(soldCartId);
       res
         .status(200)
